@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">APOD</string>
+    <string name="day">День</string>
+    <string name="month">Месяц</string>
+    <string name="year">Год</string>
+    <string name="send">Отправить</string>
+</resources>
