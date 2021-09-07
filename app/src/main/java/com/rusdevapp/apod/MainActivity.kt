@@ -2,8 +2,10 @@ package com.rusdevapp.apod
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.view.View
 import android.widget.Toast
+import com.rusdevapp.apod.Additional.CheckFields
 import com.rusdevapp.apod.Interface.RetrofitService
 import com.rusdevapp.apod.Model.ModelNASA
 import com.rusdevapp.apod.databinding.ActivityMainBinding
@@ -31,7 +33,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         if (view != null)
             when(view.id)
             {
-                binding.btnSend.id-> sendRequest()
+                binding.btnSend.id->
+                    if(!CheckFields(binding.etDay, binding.etMonth, binding.etYear).CheckResult())
+                        sendRequest()
             }
 
     }
@@ -40,7 +44,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.tvTitleAPOD.visibility=View.GONE
         binding.tvExplanationAPOD.visibility=View.GONE
         binding.progressBar.visibility=View.VISIBLE
-        date="${binding.etYear.text}-${binding.etMonth.text}-${binding.etDate.text}"
+        date="${binding.etYear.text}-${binding.etMonth.text}-${binding.etDay.text}"
         var retrofit:Retrofit = Retrofit.Builder()
                                 .baseUrl(BASE_URL)
                                 .addConverterFactory(GsonConverterFactory.create())
@@ -71,5 +75,23 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             })
 
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
+        super.onSaveInstanceState(outState, outPersistentState)
+        outState.putString("day", binding.etDay.text.toString())
+        outState.putString("month", binding.etMonth.text.toString())
+        outState.putString("year", binding.etYear.text.toString())
+        outState.putString("title", binding.tvTitleAPOD.text.toString())
+        outState.putString("explanation", binding.tvExplanationAPOD.text.toString())
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        binding.etDay.setText(savedInstanceState.getString("day"))
+        binding.etMonth.setText(savedInstanceState.getString("month"))
+        binding.etYear.setText(savedInstanceState.getString("year"))
+        binding.tvTitleAPOD.text = savedInstanceState.getString("title")
+        binding.tvExplanationAPOD.text = savedInstanceState.getString("explanation")
     }
 }

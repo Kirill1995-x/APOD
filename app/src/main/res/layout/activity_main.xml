@@ -16,7 +16,7 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/etDate"
+                android:id="@+id/etDay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="@string/day"
@@ -35,9 +35,9 @@
                 android:hint="@string/month"
                 android:textSize="20sp"
                 android:textColor="@color/black"
-                app:layout_constraintLeft_toRightOf="@+id/etDate"
+                app:layout_constraintLeft_toRightOf="@+id/etDay"
                 app:layout_constraintRight_toLeftOf="@id/etYear"
-                app:layout_constraintBaseline_toBaselineOf="@id/etDate"/>
+                app:layout_constraintBaseline_toBaselineOf="@id/etDay"/>
 
             <EditText
                 android:id="@+id/etYear"
@@ -48,7 +48,7 @@
                 android:textColor="@color/black"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintLeft_toRightOf="@id/etMonth"
-                app:layout_constraintBaseline_toBaselineOf="@id/etDate"/>
+                app:layout_constraintBaseline_toBaselineOf="@id/etDay"/>
 
             <Button
                 android:id="@+id/btnSend"
