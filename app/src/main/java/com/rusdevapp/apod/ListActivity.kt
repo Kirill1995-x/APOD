@@ -3,7 +3,9 @@ package com.rusdevapp.apod
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.rusdevapp.apod.Interface.RetrofitService
 import com.rusdevapp.apod.Model.ModelNASA
 import com.rusdevapp.apod.databinding.ActivityListBinding
@@ -26,6 +28,8 @@ class ListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityListBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.rvList.layoutManager = LinearLayoutManager(this)
 
         var retrofit: Retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
