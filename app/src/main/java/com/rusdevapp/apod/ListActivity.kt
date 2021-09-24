@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.rusdevapp.apod.Adapter.APODAdapter
 import com.rusdevapp.apod.Interface.RetrofitService
 import com.rusdevapp.apod.Model.ModelNASA
 import com.rusdevapp.apod.databinding.ActivityListBinding
@@ -23,35 +24,35 @@ class ListActivity : AppCompatActivity() {
     var explanation:String?=null
     private lateinit var binding:ActivityListBinding
     private val BASE_URL:String="https://api.nasa.gov/planetary/"
+    private var listOfAPOD:List<ModelNASA>?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        getListAPOD()
         binding.rvList.layoutManager = LinearLayoutManager(this)
+        binding.rvList.adapter = APODAdapter(listOfAPOD!!)
+    }
 
+    private fun getListAPOD()
+    {
         var retrofit: Retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
         var retrofitService: RetrofitService = retrofit.create(RetrofitService::class.java)
-        retrofitService.getAPOD("2021-09-01", "2021-09-22").enqueue(object : Callback<ModelNASA>
+        retrofitService.getAPOD("2021-09-01", "2021-09-22").enqueue(object : Callback<List<ModelNASA>>
         {
-            override fun onResponse(call: Call<ModelNASA>, response: Response<ModelNASA>) {
+            override fun onResponse(call: Call<List<ModelNASA>>, response: Response<List<ModelNASA>>) {
                 binding.progressBar.visibility= View.GONE
-                if(response.isSuccessful) {
-                    title = response.body()!!.title
-                    url = response.body()!!.url
-                    explanation = response.body()!!.explanation
-                }
-                else
-                {
-                    Toast.makeText(this@ListActivity, response.errorBody().toString(), Toast.LENGTH_LONG).show()
-                }
+                if(response.isSuccessful) listOfAPOD = response.body()
+                else Toast.makeText(this@ListActivity, response.errorBody().toString(), Toast.LENGTH_LONG).show()
+
             }
-            override fun onFailure(call: Call<ModelNASA>, t: Throwable) {
+            override fun onFailure(call: Call<List<ModelNASA>>, t: Throwable) {
                 binding.progressBar.visibility= View.GONE
                 Toast.makeText(this@ListActivity, t.message, Toast.LENGTH_LONG).show()
             }

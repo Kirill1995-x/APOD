@@ -1,3 +1,4 @@
 package com.rusdevapp.apod.Model
 
-data class ModelNASA(var title:String?=null, var url:String?=null, var explanation:String?=null)
+data class ModelNASA(var title:String?=null, var url:String?=null,
+                     var explanation:String?=null, var date:String?=null)
