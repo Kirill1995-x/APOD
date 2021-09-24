@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.rusdevapp.apod.Model.ModelNASA
 import com.rusdevapp.apod.R
 
-class APODAdapter(private val data:List<ModelNASA>): RecyclerView.Adapter<APODAdapter.ViewHolder>()
+class APODAdapter(private val data: List<ModelNASA>): RecyclerView.Adapter<APODAdapter.ViewHolder>()
 {
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
