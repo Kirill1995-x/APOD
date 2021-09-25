@@ -8,30 +8,26 @@ import androidx.recyclerview.widget.RecyclerView
 import com.rusdevapp.apod.Model.ModelNASA
 import com.rusdevapp.apod.R
 
-class APODAdapter(private val data: List<ModelNASA>): RecyclerView.Adapter<APODAdapter.ViewHolder>()
+class APODAdapter(private val element: List<ModelNASA>): RecyclerView.Adapter<APODAdapter.ViewHolder>()
 {
-
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
     {
-        var tvTitle:TextView?=null
-        var tvDate:TextView?=null
-
-        init {
-            tvTitle = itemView.findViewById(R.id.tvTitle)
-            tvDate = itemView.findViewById(R.id.tvDate)
+        fun bind(element: ModelNASA)
+        {
+            var tvTitle:TextView = itemView.findViewById(R.id.tvTitle)
+            var tvDate:TextView = itemView.findViewById(R.id.tvDate)
+            tvTitle.text = element.title
+            tvDate.text = element.date
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView: View = LayoutInflater.from(parent.context)
-                             .inflate(R.layout.data, parent, false)
-        return ViewHolder(itemView)
+        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.data, parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.tvTitle?.text = data[position].title
-        holder.tvDate?.text = data[position].date
+        holder.bind(element[position])
     }
 
-    override fun getItemCount(): Int = data.size
+    override fun getItemCount(): Int = element.size
 }

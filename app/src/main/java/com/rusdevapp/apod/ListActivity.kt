@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Display
 import android.view.View
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rusdevapp.apod.Adapter.APODAdapter
@@ -29,12 +30,8 @@ class ListActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.rvList.layoutManager = LinearLayoutManager(this)
-        val listOfAPOD=ArrayList<ModelNASA>()
-        for (i in 0 until 10)
-            listOfAPOD.add(ModelNASA("Title", "https://blablabla.com", "bla bla bla", i.toString()))
-        //binding.progressBar.visibility = View.VISIBLE
-        //getListAPOD()
-        binding.rvList.adapter = APODAdapter(listOfAPOD)
+        binding.progressBar.visibility = View.VISIBLE
+        getListAPOD()
     }
 
     private fun getListAPOD()
