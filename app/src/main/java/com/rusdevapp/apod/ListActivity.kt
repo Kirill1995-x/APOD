@@ -49,7 +49,7 @@ class ListActivity : AppCompatActivity() {
                 if(response.isSuccessful)
                 {
                     var listOfAPOD:List<ModelNASA> = response.body()!!
-                    binding.rvList.adapter = APODAdapter(listOfAPOD)
+                    binding.rvList.adapter = APODAdapter(listOfAPOD, this@ListActivity)
                 }
                 else Toast.makeText(this@ListActivity, response.errorBody().toString(), Toast.LENGTH_LONG).show()
             }
