@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">APOD</string>
-    <string name="title">Astronomy Picture of the Day</string>
+    <string name="title">Фото дня от NASA</string>
+    <string name="setWallpaper">Установить обои</string>
 </resources>
