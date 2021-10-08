@@ -1,24 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="10dp"
-    android:background="@drawable/gradient"
+    style="@style/LayoutStyle"
     tools:context=".ListActivity">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <TextView
+            style="@style/TextViewTitleStyle"
+            android:text="@string/title"/>
+
+        <TextView
+            style="@style/TextViewStyle"
+            android:text="@string/start_date"/>
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="@string/title"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            android:textColor="@color/white"/>
+            android:orientation="horizontal">
+            <Spinner
+                android:id="@+id/spStartDay"
+                style="@style/SpinnerStyle"/>
+            <Spinner
+                android:id="@+id/spStartMonth"
+                style="@style/SpinnerStyle"/>
+            <Spinner
+                android:id="@+id/spStartYear"
+                style="@style/SpinnerStyle"/>
+        </LinearLayout>
+
+        <TextView
+           style="@style/TextViewStyle"
+           android:text="@string/end_date"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Spinner
+                android:id="@+id/spEndDay"
+                style="@style/SpinnerStyle"/>
+            <Spinner
+                android:id="@+id/spEndMonth"
+                style="@style/SpinnerStyle"/>
+            <Spinner
+                android:id="@+id/spEndYear"
+                style="@style/SpinnerStyle"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnShowList"
+            style="@style/ButtonStyle"
+            android:text="@string/show_list"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvList"

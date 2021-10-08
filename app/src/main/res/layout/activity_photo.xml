@@ -2,10 +2,7 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="10dp"
-    android:background="@drawable/gradient"
+    style="@style/LayoutStyle"
     tools:context=".PhotoActivity">
 
     <LinearLayout
@@ -15,12 +12,8 @@
 
         <TextView
             android:id="@+id/tvTitleAPOD"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:textSize="20sp"
-            android:textColor="@color/white"
-            android:textStyle="bold"/>
+            style="@style/TextViewTitleStyle"
+            android:layout_marginTop="20dp" />
 
         <ImageView
             android:id="@+id/imgAPOD"
@@ -30,19 +23,11 @@
 
         <Button
             android:id="@+id/btnSetWallpaper"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/setWallpaper"
-            android:textSize="20sp"
-            android:textColor="@color/white"
-            android:layout_gravity="center_horizontal"/>
+            style="@style/ButtonStyle"
+            android:text="@string/setWallpaper"/>
 
         <TextView
             android:id="@+id/tvExplanationAPOD"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:textSize="20sp"
-            android:textColor="@color/white"/>
+            style="@style/TextViewStyle"/>
     </LinearLayout>
 </ScrollView>
