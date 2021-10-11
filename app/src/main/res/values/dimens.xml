@@ -3,4 +3,5 @@
     <dimen name="title_size">26sp</dimen>
     <dimen name="main_size">20sp</dimen>
     <dimen name="padding">10dp</dimen>
+    <dimen name="spinner_padding">5dp</dimen>
 </resources>

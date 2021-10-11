@@ -45,4 +45,19 @@
         <item name="android:textSize">@dimen/main_size</item>
         <item name="android:textColor">@color/white</item>
     </style>
+    <style name="SpinnerLayoutStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/main_size</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:padding">@dimen/spinner_padding</item>
+    </style>
+    <style name="SpinnerDropdownLayoutStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/main_size</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">@dimen/spinner_padding</item>
+    </style>
 </resources>
