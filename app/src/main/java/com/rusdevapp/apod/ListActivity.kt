@@ -98,7 +98,7 @@ class ListActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun getListAPOD(start_date:String, end_date:String)
     {
-        binding.progressBar.visibility = View.VISIBLE
+        binding.pbList.visibility = View.VISIBLE
         //---
         var retrofit: Retrofit = Retrofit.Builder()
             .baseUrl(App.BASE_URL)
@@ -112,7 +112,7 @@ class ListActivity : AppCompatActivity(), View.OnClickListener {
             override fun onResponse(call: Call<ArrayList<APODModel>>,
                                     response: Response<ArrayList<APODModel>>)
             {
-                binding.progressBar.visibility= View.GONE
+                binding.pbList.visibility= View.GONE
                 if(response.isSuccessful)
                 {
                     listOfAPOD = response.body()!!
@@ -124,7 +124,7 @@ class ListActivity : AppCompatActivity(), View.OnClickListener {
                                     Toast.LENGTH_LONG).show()
             }
             override fun onFailure(call: Call<ArrayList<APODModel>>, t: Throwable) {
-                binding.progressBar.visibility= View.GONE
+                binding.pbList.visibility= View.GONE
                 Toast.makeText(this@ListActivity, t.message, Toast.LENGTH_LONG).show()
             }
         })

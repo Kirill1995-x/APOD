@@ -1,33 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/LayoutStyle"
     tools:context=".PhotoActivity">
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/tvTitleAPOD"
-            style="@style/TextViewTitleStyle"
-            android:layout_marginTop="20dp" />
-
-        <ImageView
-            android:id="@+id/imgAPOD"
+        android:layout_height="wrap_content">
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"/>
-
-        <Button
-            android:id="@+id/btnSetWallpaper"
-            style="@style/ButtonStyle"
-            android:text="@string/setWallpaper"/>
-
-        <TextView
-            android:id="@+id/tvExplanationAPOD"
-            style="@style/TextViewStyle"/>
-    </LinearLayout>
-</ScrollView>
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tvTitleAPOD"
+                style="@style/TextViewTitleStyle"
+                android:layout_marginTop="20dp"
+                android:visibility="gone"/>
+            <ImageView
+                android:id="@+id/imgAPOD"
+                android:layout_width="400dp"
+                android:layout_height="400dp"
+                android:scaleType="centerCrop"
+                android:layout_marginTop="20dp"/>
+            <Button
+                android:id="@+id/btnSetWallpaper"
+                style="@style/ButtonStyle"
+                android:text="@string/setWallpaper"
+                android:visibility="gone"/>
+            <TextView
+                android:id="@+id/tvExplanationAPOD"
+                style="@style/TextViewStyle"
+                android:visibility="gone"/>
+        </LinearLayout>
+    </ScrollView>
+    <ProgressBar
+        android:id="@+id/pbPhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="visible"/>
+</FrameLayout>
